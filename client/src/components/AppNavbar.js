@@ -12,7 +12,7 @@ import{
 
 class AppNavbar extends Component{
     state = {
-        isOpen:false
+        isOpen:true
     }
 
     toggle = ()=>{
