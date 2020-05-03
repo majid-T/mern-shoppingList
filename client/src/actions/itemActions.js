@@ -1,4 +1,5 @@
 import {GET_ITEMS,ADD_ITEM,DELETE_ITEM} from './types';
+import itemReducer from '../reducers/itemReducer';
 
 export const getItems = ()=>{
     return{
@@ -13,8 +14,9 @@ export const deleteItem = id=>{
     }
 }
 
-// export const getItem = ()=>{
-//     return{
-//         type:GET_ITEMS
-//     }
-// }
+export const addItem = item=>{
+    return{
+        type:ADD_ITEM,
+        payload:item
+    }
+}
