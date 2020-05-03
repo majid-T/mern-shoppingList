@@ -6,11 +6,12 @@ export const getItems = ()=>{
     }
 }
 
-// export const getItem = ()=>{
-//     return{
-//         type:GET_ITEMS
-//     }
-// }
+export const deleteItem = id=>{
+    return{
+        type:DELETE_ITEM,
+        payload:id
+    }
+}
 
 // export const getItem = ()=>{
 //     return{
