@@ -1,22 +1,30 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const path = require('path');
 
 const items = require('./routes/apis/items');
+const users = require('./routes/apis/users');
+
 const app = express();
 
 
 //BodyParser Middleware adding
-app.use(bodyParser.json());
+app.use(express.json());
 
 //connect to Mongo DB === read this later from env
-mongoose.connect('mongodb+srv://MajidMongoUser:Mongo2146@cluster0-o3pt4.azure.mongodb.net/local_library?retryWrites=true')
+mongoose.connect('mongodb+srv://MajidMongoUser:Mongo2146@cluster0-o3pt4.azure.mongodb.net/shopping_list_mern?retryWrites=true',
+        {
+            useNewUrlParser:true,
+            useUnifiedTopology:true,
+            useCreateIndex:true
+        }
+    )
     .then(()=>console.log('Connected to Mongo DB'))
     .catch((err)=>console.log(err));
 
 
 app.use('/api/items',items);
+app.use('/api/users',users);
 
 
 //Setting up for running on heroku
