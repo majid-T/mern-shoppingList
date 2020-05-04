@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-
+const config = require('config');
 const items = require('./routes/apis/items');
 const users = require('./routes/apis/users');
 
@@ -12,7 +12,8 @@ const app = express();
 app.use(express.json());
 
 //connect to Mongo DB === read this later from env
-mongoose.connect('mongodb+srv://MajidMongoUser:Mongo2146@cluster0-o3pt4.azure.mongodb.net/shopping_list_mern?retryWrites=true',
+const db = config.get('mongo_URI')
+mongoose.connect(db,
         {
             useNewUrlParser:true,
             useUnifiedTopology:true,
