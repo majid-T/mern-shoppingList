@@ -4,6 +4,7 @@ const path = require('path');
 const config = require('config');
 const items = require('./routes/apis/items');
 const users = require('./routes/apis/users');
+const auth = require('./routes/apis/auth');
 
 const app = express();
 
@@ -26,6 +27,7 @@ mongoose.connect(db,
 
 app.use('/api/items',items);
 app.use('/api/users',users);
+app.use('/api/auth',auth);
 
 
 //Setting up for running on heroku
