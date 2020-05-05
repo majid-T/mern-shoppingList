@@ -1,47 +1,45 @@
-import React, {Component} from 'react';
-import{
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Container
-} from 'reactstrap';
+import React, { Component } from "react";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  Container,
+} from "reactstrap";
+import RegisterModal from "./auth/RegisterModel";
 
-class AppNavbar extends Component{
-    state = {
-        isOpen:true
-    }
+class AppNavbar extends Component {
+  state = {
+    isOpen: true,
+  };
 
-    toggle = ()=>{
-        this.setState({
-            isOpen : !this.state.isOpen
-        });
-    }
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
 
-    render(){
-        return (
-            <div>
-                <Navbar color='dark' dark expand='sm' className='mb-5'>
-                    <Container>
-                        <NavbarBrand href='/'>Shopping List</NavbarBrand>
-                        <NavbarToggler onClick={this.toggle}/>
-                        <Collapse isOpen={this.state.isOpen}>
-                            <Nav className='ml-auto'navbar>
-                                <NavItem>
-                                    <NavLink href='https://github.com/majid-T'>
-                                        Github
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
-                    </Container>
-                </Navbar>
-            </div>
-        ) 
-    }
+  render() {
+    return (
+      <div>
+        <Navbar color="dark" dark expand="sm" className="mb-5">
+          <Container>
+            <NavbarBrand href="/">Shopping List</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen}>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <RegisterModal />
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>
+      </div>
+    );
+  }
 }
 
 export default AppNavbar;
