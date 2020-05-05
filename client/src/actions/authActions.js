@@ -15,6 +15,22 @@ import { returnErrors } from "./errorActions";
 export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
+  axios
+    .get("/api/auth/user", tokenConfig(getState))
+    .then((res) =>
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data,
+      })
+    )
+    .catch((err) => {
+      dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch({ type: AUTH_ERROR });
+    });
+};
+
+//setting up headers and tokens
+export const tokenConfig = (getState) => {
   const token = getState().auth.token;
 
   const config = {
@@ -27,16 +43,5 @@ export const loadUser = () => (dispatch, getState) => {
     config.headers["x-auth-token"] = token;
   }
 
-  axios
-    .get("/api/auth/user", config)
-    .then((res) =>
-      dispatch({
-        type: USER_LOADED,
-        payload: res.data,
-      })
-    )
-    .catch((err) => {
-      dispatch(returnErrors(err.response.data, err.response.status));
-      dispatch({ type: AUTH_ERROR });
-    });
+  return config;
 };
