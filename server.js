@@ -11,6 +11,16 @@ const app = express();
 //BodyParser Middleware adding
 app.use(express.json());
 
+//for CORS
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin,X-Requested-With,Content-Type,Accept"
+//   );
+//   next();
+// });
+
 //connect to Mongo DB === read this later from env
 const db = config.get("mongo_URI");
 mongoose
