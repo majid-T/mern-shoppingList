@@ -57,6 +57,13 @@ export const register = ({ name, email, password }) => (dispatch) => {
     });
 };
 
+//Logout user
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS,
+  };
+};
+
 //setting up headers and tokens
 export const tokenConfig = (getState) => {
   const token = getState().auth.token;
